@@ -43,7 +43,6 @@ public class MetodosOrdenamiento {
         }
 
         return arreglo;
-
     }
 
     // Método de burbuja tradicional con errores
@@ -133,8 +132,8 @@ public class MetodosOrdenamiento {
     }
 
     // Método de inserción con errores
-    // Error encontrado: i--
-    //Soolución: i++
+    // Error encontrado: signo mayor en la linea while
+    //Soolución: cambiar por mayor o igual
     public int[] insercionPrimero(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
@@ -142,9 +141,9 @@ public class MetodosOrdenamiento {
             int key = arreglo[j];
             int i = j - 1;
 
-            while (i > 0 && arreglo[i] < key) {
+            while (i >= 0 && arreglo[i] < key) {
                 arreglo[i + 1] = arreglo[i];
-                i++;
+                i--;
             }
             arreglo[i + 1] = key;
         }
@@ -152,7 +151,7 @@ public class MetodosOrdenamiento {
     }
 
     // Método de inserción con errores
-    // Error encontrado: j-- y falt el i++
+    // Error encontrado: j-- y falt el i--
     public int[] insercionSegundo(int[] arregloOriginal) {
 
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
@@ -162,6 +161,7 @@ public class MetodosOrdenamiento {
             int i = j - 1;
             for (; j >= 0 && arreglo[j] > actual; j++) {
                 arreglo[j + 1] = arreglo[j];
+                i--;
             }
             arreglo[i + 1] = actual;
         }
@@ -171,19 +171,18 @@ public class MetodosOrdenamiento {
     // Método de inserción con errores
     // Error encontrado:
     public int[] insercionTercero(int[] arregloOriginal) {
-
         int[] arreglo = Arrays.copyOf(arregloOriginal, arregloOriginal.length);
         for (int j = 1; j < arreglo.length; j++) {
             int key = arreglo[j];
-            int i = j;
-
-            while (i > 0 && arreglo[i] < key) {
+            int i = j - 1;
+    
+            while (i >= 0 && arreglo[i] > key) {
                 arreglo[i + 1] = arreglo[i];
-                i++;
+                i--;
             }
             arreglo[i + 1] = key;
         }
-        return new int[] { 15, 34, 1, 2, 5, 6, 7, 10 };
+        return arreglo;
     }
 
 }
