@@ -7,3 +7,15 @@ class MetodosOrdenamiento:
                 if arreglo[j] > arreglo[j + 1]:
                     arreglo[j], arreglo[j + 1] = arreglo[j + 1], arreglo[j]
         return arreglo
+    
+    def sort_seleccion(self, arreglo):
+        arreglo = arreglo.copy()
+        for i in range(len(arreglo) - 1):
+            indice_minimo = i
+            for j in range(i + 1, len(arreglo)):
+                if arreglo[j] < arreglo[indice_minimo]:
+                    indice_minimo = j
+            arreglo[i], arreglo[indice_minimo] = arreglo[indice_minimo], arreglo[i]
+        return arreglo
+
+
